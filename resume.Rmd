@@ -1,6 +1,6 @@
 ---
-title: Nick Strayer's Resume"
-author: Nick Strayer
+title: Beth Perry's Resume"
+author: Beth Perry
 date: "`r Sys.Date()`"
 output:
   pagedown::html_resume:
@@ -30,15 +30,7 @@ source('parsing_functions.R')
 # First let's get the data, filtering to only the items tagged as
 # Resume items
 position_data <- read_csv('positions.csv') %>% 
-  filter(in_resume) %>% 
-  mutate(
-    # Build some custom sections by collapsing others
-    section = case_when(
-      section %in% c('research_positions', 'industry_positions') ~ 'positions', 
-      section %in% c('data_science_writings', 'by_me_press') ~ 'writings',
-      TRUE ~ section
-    )
-  ) 
+  filter(in_resume)
 
 ```
 
@@ -54,11 +46,11 @@ Contact {#contact}
 
 
 
-- <i class="fa fa-envelope"></i> nick.strayer@gmail.com
-- <i class="fa fa-twitter"></i> NicholasStrayer
-- <i class="fa fa-github"></i> github.com/nstrayer
-- <i class="fa fa-link"></i> [nickstrayer.me](http://nickstrayer.me/)
-- <i class="fa fa-phone"></i> (734) 645-0110
+- <i class="fa fa-envelope"></i> beth.perry@asu.edu
+- <i class="fa fa-twitter"></i> bmperry28
+- <i class="fa fa-github"></i> github.com/bperry28
+- <i class="fa fa-link"></i> [bperry.github.io](https://bperry28.github.io/)
+- <i class="fa fa-phone"></i> (602) 123-4567
 
 
 
@@ -70,33 +62,32 @@ Language Skills {#skills}
 skills <- tribble(
   ~skill,               ~level,
   "R",                  5,
-  "Javascript (d3.js)", 4.5,
-  "Python",             4,
-  "Bash",               3.5,
-  "SQL",                3,
-  "C++",                3,
-  "AWK",                3
+  "Excel",              5,
+  "HTML",               3.5,
+  "SQL",                2,
+  "CSS",                2,
+  "Javascript",         1
 )
 build_skill_bars(skills)
 ```
 
 
 
-Open Source Contributions {#open-source}
+Projects {#projects}
 --------------------------------------------------------------------------------
 
-All projects available at `github.com/nstrayer/<name>`
+All projects available at `github.com/bperry28/<name>`
 
 
-- `shinysense`: R package to use sensor data in Shiny apps
-- `tuftesque`: Hugo theme (behind LiveFreeOrDichotomize.com)
-- `slid3r`: D3 add-on for fully svg slider inputs
+- `bperry28.github.io`: Personal website
+- `cv`: Personal CV page
+- `montyhall`: R package to play the monty hall game
 
 
 More info {#more-info}
 --------------------------------------------------------------------------------
 
-See full CV at nickstrayer.me/cv for more complete list of positions and publications.
+See full CV at bperry28.github.io/cv for more complete list of positions and publications.
 
 
 Disclaimer {#disclaimer}
@@ -104,7 +95,7 @@ Disclaimer {#disclaimer}
 
 Made w/ [**pagedown**](https://github.com/rstudio/pagedown). 
 
-Source code: [github.com/nstrayer/cv](https://github.com/nstrayer/cv).
+Source code: [github.com/bperry28/cv](https://github.com/bperry28/cv).
 
 Last updated on `r Sys.Date()`.
 
@@ -114,14 +105,12 @@ Last updated on `r Sys.Date()`.
 Main
 ================================================================================
 
-Nick Strayer {#title}
+Beth Perry {#title}
 --------------------------------------------------------------------------------
 
 ```{r}
-intro_text <- "I have made [visualizations viewed by hundreds of thousands of people](https://www.nytimes.com/interactive/2016/08/26/us/college-student-migration.html), [sped up query times for 25 terabytes of data by an average of 4,800 times](https://livefreeordichotomize.com/2019/06/04/using_awk_and_r_to_parse_25tb/), and built [packages for R](https://github.com/nstrayer/shinysense) that let you [do magic](http://nickstrayer.me/dataDayTexas/).
+intro_text <- "I am a recent graduate of Arizona State University's psychology program. I am currently completing a MS in Program Evaluation and Data Analyicts. I have extensive social science research experience and am increasing my technical skills in my current studies. I aspire to work in higher education upon completeing my program."
 
-Currently searching for a data science position that allows me to build tools using visualization and machine learning to help people explore and understand their data. 
-"
 
 
 cat(sanitize_links(intro_text))
@@ -138,19 +127,16 @@ position_data %>% print_section('education')
 
 
 
-Selected Positions {data-icon=suitcase}
+Industry Positions {data-icon=suitcase}
 --------------------------------------------------------------------------------
 
 ```{r}
-position_data %>% print_section('positions')
+position_data %>% print_section('industry_positions')
 ```
 
-Selected Writing {data-icon=newspaper}
+Research Positions {data-icon=suitcase}
 --------------------------------------------------------------------------------
 
-
 ```{r}
-position_data %>% print_section('writings')
+position_data %>% print_section('research_positions')
 ```
-
-
